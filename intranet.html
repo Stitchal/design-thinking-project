@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Espace — Le HUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/intranet.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       ÉCRAN 1 — LOGIN PIN
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-login" class="screen active">
+    <div class="login-bg"></div>
+    <div class="login-card">
+      <a href="index.html" class="login-logo-link">
+        <div class="login-logo">LE <em>HUB</em></div>
+      </a>
+      <h1 class="login-title">Mon espace personnel</h1>
+      <p class="login-sub">Entrez votre code PIN à 4 chiffres</p>
+
+      <div class="pin-dots" id="pin-dots" role="status" aria-label="Saisie du PIN">
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+      </div>
+
+      <div class="pin-error" id="pin-error" aria-live="polite" role="alert"></div>
+
+      <div class="pin-pad" id="pin-pad" role="group" aria-label="Clavier PIN">
+        <button class="pin-key" data-digit="1" type="button">1</button>
+        <button class="pin-key" data-digit="2" type="button">2</button>
+        <button class="pin-key" data-digit="3" type="button">3</button>
+        <button class="pin-key" data-digit="4" type="button">4</button>
+        <button class="pin-key" data-digit="5" type="button">5</button>
+        <button class="pin-key" data-digit="6" type="button">6</button>
+        <button class="pin-key" data-digit="7" type="button">7</button>
+        <button class="pin-key" data-digit="8" type="button">8</button>
+        <button class="pin-key" data-digit="9" type="button">9</button>
+        <button class="pin-key pin-clear" id="pin-clear" type="button" aria-label="Effacer">⌫</button>
+        <button class="pin-key" data-digit="0" type="button">0</button>
+        <button class="pin-key pin-submit" id="pin-submit" type="button" disabled aria-label="Valider">OK</button>
+      </div>
+
+      <p class="login-help">Vous n'avez pas encore de code&nbsp;? Demandez à l'accueil.</p>
+      <a href="index.html" class="login-back-link">← Retour au site du HUB</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       ÉCRAN 2 — DASHBOARD
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-dashboard" class="screen">
+    <header class="intra-header">
+      <div class="intra-logo">LE <em>HUB</em></div>
+      <div class="intra-user-chip">
+        <span class="intra-user-avatar" id="dash-avatar"></span>
+        <span class="intra-user-name" id="dash-user-name"></span>
+      </div>
+      <button class="btn-logout" id="btn-logout" type="button">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 2H3a1 1 0 00-1 1v10a1 1 0 001 1h3M11 11l3-3-3-3M14 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Déconnexion
+      </button>
+    </header>
+
+    <!-- Welcome band -->
+    <div class="dash-welcome">
+      <div class="dash-eyebrow">Bonjour,</div>
+      <h1 class="dash-greeting" id="dash-greeting"></h1>
+      <p class="dash-date" id="dash-date"></p>
+    </div>
+
+    <!-- Parcours progression -->
+    <div class="dash-section">
+      <div class="dash-section-label">Votre parcours</div>
+      <div class="progress-steps" id="progress-steps"></div>
+    </div>
+
+    <!-- Grille 4 modules -->
+    <div class="dash-grid" id="dash-grid">
+      <button class="dash-card" data-module="profil" type="button">
+        <span class="dash-card-badge" id="badge-profil"></span>
+        <div class="dash-card-icon">👤</div>
+        <div class="dash-card-title">Mon profil</div>
+        <div class="dash-card-sub">Formations · CV · Étapes</div>
+      </button>
+      <button class="dash-card" data-module="calendrier" type="button">
+        <span class="dash-card-badge" id="badge-cal"></span>
+        <div class="dash-card-icon">📅</div>
+        <div class="dash-card-title">Calendrier</div>
+        <div class="dash-card-sub">Mes RDV · Événements</div>
+      </button>
+      <button class="dash-card" data-module="messages" type="button">
+        <span class="dash-card-badge" id="badge-msg"></span>
+        <div class="dash-card-icon">💬</div>
+        <div class="dash-card-title">Messagerie</div>
+        <div class="dash-card-sub">Accompagnateurs · Rappels</div>
+      </button>
+      <button class="dash-card" data-module="emploi" type="button">
+        <span class="dash-card-badge" id="badge-emploi"></span>
+        <div class="dash-card-icon">💼</div>
+        <div class="dash-card-title">Offres d'emploi</div>
+        <div class="dash-card-sub">Candidatures · Partenaires</div>
+      </button>
+    </div>
+
+    <!-- Prochain RDV -->
+    <div class="dash-section" id="dash-next-rdv-wrap">
+      <div class="dash-section-label">Prochain rendez-vous</div>
+      <div id="dash-next-rdv"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       ÉCRAN 3 — MODULE
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-module" class="screen">
+    <header class="intra-header">
+      <button class="btn-back" id="btn-back" type="button">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Retour
+      </button>
+      <h2 class="module-title" id="module-title"></h2>
+      <button class="btn-logout" id="btn-logout-2" type="button">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 2H3a1 1 0 00-1 1v10a1 1 0 001 1h3M11 11l3-3-3-3M14 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Déconnexion
+      </button>
+    </header>
+    <div class="module-content" id="module-content"></div>
+  </div>
+
+  <!-- Auto-logout bar -->
+  <div class="autologout-bar" id="autologout-bar">
+    <div class="autologout-fill" id="autologout-fill"></div>
+  </div>
+
+  <!-- Modal avertissement inactivité -->
+  <div class="inactivity-modal" id="inactivity-modal" role="alertdialog" aria-labelledby="inactivity-msg" hidden>
+    <div class="inactivity-modal-inner">
+      <div class="inactivity-icon">⏱️</div>
+      <p id="inactivity-msg">Toujours là&nbsp;? Vous allez être déconnecté dans <strong id="inactivity-countdown">30</strong> secondes.</p>
+      <button class="btn-stay" id="btn-stay" type="button">Oui, je suis là</button>
+    </div>
+  </div>
+
+  <script src="js/intranet.js"></script>
+</body>
+</html>
